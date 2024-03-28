@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default function FeedbackList() {
+export default function ApiCallTest() {
 
     const handleSubmit = () => {
         axios.get("https://localhost:7145/WeatherForecast")
