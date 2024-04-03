@@ -1,22 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
-export default function MijnFeedbackLijst({ onClick }) {
-    const feedbackObjecten = [
-        { id: 1, naam: "Feedback 1", beschrijving: "Beschrijving van Feedback object 1", datum: "25-03-2024"},
-        { id: 2, naam: "Feedback 2", beschrijving: "Beschrijving van Feedback object 2", datum: "28-03-2024"},
-        { id: 3, naam: "Feedback 3", beschrijving: "Beschrijving van Feedback object 3", datum: "28-03-2024"},
-    ];
+export default function MijnFeedbackLijst({onClick}) {
+    const [feedbackObjecten, setFeedbackObjecten] = useState([]);
+
+    useEffect(() => {
+        //Bij het laden van MijnFeedbackLijst wordt alle gekregen feedback van de gebruiker opgehaald
+        axios.get("https://localhost:7145/feedbackAPI/Feedback/1")
+            .then(response => {
+                setFeedbackObjecten(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, );
 
     return (
-        <div className="list-group">
+        <div className={"list-group"}>
             {feedbackObjecten.map((feedback) => (
+                /*Deze onclick verwijst naar de onclick uit MijnFeedback, doordat deze als property is meegegeven */
                 <div key={feedback.id} onClick={() => onClick(feedback)}>
-                    <div className="list-group-item list-group-item-action" aria-current="true">
-                        <div className="d-flex justify-content-between">
-                            <h5 className="mb-1">{feedback.naam}</h5>
-                            <small>{feedback.datum}</small>
+                    <div className={"list-group-item list-group-item-action"} aria-current={"true"}>
+                        <div className={"d-flex justify-content-between"}>
+                            <h5 className={"mb-1"}>Zender: {feedback.zender.naam}</h5>
+                            <small>{feedback.id}</small>
                         </div>
-                        <p className="mb-1">Feedback.....</p>
+                        <p className={"mb-1"}>{feedback.givenFeedback}</p>
                     </div>
                 </div>
             ))}

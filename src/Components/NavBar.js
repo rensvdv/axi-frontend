@@ -8,7 +8,7 @@ export default function NavBar() {
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link to={""} className={"nav-link active" }>Home</Link>
+                                <Link to={""} className={"nav-link" }>Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to={"/teams"} className={"nav-link"}>Mijn teams</Link>
