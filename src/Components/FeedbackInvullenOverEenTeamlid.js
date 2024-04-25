@@ -21,12 +21,12 @@ export default function FeedbackInvullenOverEenTeamlid({geselecteerdTeamlid}) {
             .then(response => {
                 console.log(response.status, response.data);
                 setStatus({ type: 'success' });
+                setFeedbackText("");
             })
             .catch(error => {
                 console.error(error);
                 setStatus({ type: 'error', error });
             });
-        setFeedbackText("");
     }
 
     //Er wordt eerst gecontroleerd of er een teamlid geselecteerd is
