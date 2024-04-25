@@ -3,44 +3,30 @@ import axios from "axios";
 
 export default function FeedbackInvullenOverEenTeamlid({geselecteerdTeamlid}) {
     const [feedbackText, setFeedbackText] = useState("");
-    const [feedback, setFeedback] = useState({
-        givenFeedback: '',
-        actief: true,
-        zender: [
-            {
-                id: 2
-            }
-        ],
-        ontvanger: [
-            {
-                id: 1
-            }
-        ]
-    });
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-    };
+    const [status, setStatus] = useState(undefined);
 
     const handleSubmit = () => {
         const feedbackData = {
             givenFeedback: feedbackText,
             actief: true,
             zender: {
-                    id: 2
+                    id: 1
                 },
             ontvanger: {
-                    id: 1
+                    id: geselecteerdTeamlid.id
                 }
         };
         console.log(feedbackData);
         axios.post("https://localhost:7145/feedbackAPI/Feedback/maakfeedback", feedbackData)
             .then(response => {
                 console.log(response.status, response.data);
+                setStatus({ type: 'success' });
             })
             .catch(error => {
                 console.error(error);
+                setStatus({ type: 'error', error });
             });
+        setFeedbackText("");
     }
 
     //Er wordt eerst gecontroleerd of er een teamlid geselecteerd is
@@ -61,14 +47,17 @@ export default function FeedbackInvullenOverEenTeamlid({geselecteerdTeamlid}) {
                 <textarea
                     className={"form-control"}
                     rows={"5"}
-                    name = "commentTextArea"
-                    type="text"
-                    id="CommentsOrAdditionalInformation"
                     value = {feedbackText}
                     onChange={e => setFeedbackText(e.target.value)}
                 >
                </textarea> <br />
-                <button className={"btn btn-primary"} onClick={handleSubmit}>Verzenden</button>
+                <button className={"btn btn-primary"} onClick={handleSubmit}>Verzenden</button> <br /> <br />
+
+                {status?.type === 'success' &&
+                <div className="alert alert-success" role="alert">Feedback verstuurd!</div>}
+                {status?.type === 'error' && (
+                    <div className="alert alert-danger" role="alert">Er is een fout opgetreden</div>
+                )}
             </div>
         </div>
     )
