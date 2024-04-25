@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 export default function AlleTeamledenLijst({onClick}) {
-    const teamleden = [
-        { id: 2, naam: "Millo", functie: "Teamleider"},
-        { id: 3, naam: "Amin", functie: "Teamlid"},
-        { id: 4, naam: "Rens", functie: "Teamlid"}
-    ];
+    const [teamleden, setTeamleden] = useState([]);
+
+    useEffect(() => {
+        //Bij het laden van MijnFeedbackLijst wordt alle gekregen feedback van de gebruiker opgehaald
+        axios.get("https://localhost:7145/feedbackAPI/Gebruiker")
+            .then(response => {
+                setTeamleden(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, );
 
     return (
         <div className="list-group">
@@ -17,7 +25,7 @@ export default function AlleTeamledenLijst({onClick}) {
                         <div className={"d-flex justify-content-between"}>
                             <h5 className={"mb-1"}>{teamlid.naam}</h5>
                         </div>
-                        <p className={"mb-1"}>{teamlid.functie}</p>
+                        <p className={"mb-1"}>Teamlid</p>
                     </div>
                 </div>
             ))}
