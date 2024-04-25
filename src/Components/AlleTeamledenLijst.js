@@ -2,9 +2,9 @@ import React from "react";
 
 export default function AlleTeamledenLijst({onClick}) {
     const teamleden = [
-        { id: 1, naam: "Gebruiker 1", functie: "Teamleider"},
-        { id: 2, naam: "Gebruiker 2", functie: "Teamlid"},
-        { id: 3, naam: "Gebruiker 3", functie: "Teamlid"}
+        { id: 2, naam: "Millo", functie: "Teamleider"},
+        { id: 3, naam: "Amin", functie: "Teamlid"},
+        { id: 4, naam: "Rens", functie: "Teamlid"}
     ];
 
     return (
