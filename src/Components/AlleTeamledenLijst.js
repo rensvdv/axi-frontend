@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function AlleTeamledenLijst({onClick}) {
     const [teamleden, setTeamleden] = useState([]);
+    const userId = 1;
 
     useEffect(() => {
         //Bij het laden van MijnFeedbackLijst wordt alle gekregen feedback van de gebruiker opgehaald
@@ -18,12 +19,12 @@ export default function AlleTeamledenLijst({onClick}) {
     return (
         <div className="list-group">
             {/*Er wordt door alle teamleden heen gegaan met de map functie, ieder teamlid object ziet er hetzelfde uit */}
-            {teamleden.map((teamlid) => (
+            {teamleden.filter(teamlid => teamlid.id !== userId).map((teamlidFilter) => (
                 /*Deze onclick verwijst naar de onclick uit FeedbackGeven, doordat deze als property is meegegeven */
-                <div key={teamlid.id} onClick={() => onClick(teamlid)}>
+                <div key={teamlidFilter.id} onClick={() => onClick(teamlidFilter)}>
                     <div className={"list-group-item list-group-item-action"} aria-current={"true"}>
                         <div className={"d-flex justify-content-between"}>
-                            <h5 className={"mb-1"}>{teamlid.naam}</h5>
+                            <h5 className={"mb-1"}>{teamlidFilter.naam}</h5>
                         </div>
                         <p className={"mb-1"}>Teamlid</p>
                     </div>
