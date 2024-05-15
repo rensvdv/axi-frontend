@@ -50,8 +50,8 @@ export default function FeedbackUpdaten({geselecteerdTeamlid}) {
     return (
         <div className={"card text-center h-100"}>
             <div className={"card-body"}>
-                <h3>{geselecteerdTeamlid.naam}</h3>
-                <label className={"form-label"}>Update feedback over {geselecteerdTeamlid.naam}</label>
+                <h3>{geselecteerdTeamlid.ontvanger.naam}</h3>
+                <label className={"form-label"}>Update feedback over {geselecteerdTeamlid.ontvanger.naam}</label>
                 <textarea
                     className={"form-control"}
                     rows={"5"}
