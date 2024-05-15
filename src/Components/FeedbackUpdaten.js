@@ -17,9 +17,7 @@ export default function FeedbackUpdaten({geselecteerdTeamlid}) {
                     id: geselecteerdTeamlid.ontvanger.id
                 }
         };
-        console.log("FEEDBACK DATA:");
-        console.log(feedbackData);
-        console.log(geselecteerdTeamlid);
+
         axios.put("https://localhost:7145/feedbackAPI/Feedback/updatefeedback", feedbackData)
             .then(response => {
                 console.log(response.status, response.data);
