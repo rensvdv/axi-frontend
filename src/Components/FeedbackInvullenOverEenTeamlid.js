@@ -35,34 +35,28 @@ export default function FeedbackInvullenOverEenTeamlid({ geselecteerdTeamlid }) 
     return <h3>Geen gebruiker geselecteerd</h3>;
   }
 
-  //Als er wel een teamlid is geselecteerd, dan wordt het feedback formulier getoond
-  return (
-    <div className={"card text-center h-100"}>
-      <div className={"card-body"}>
-        <h3>{geselecteerdTeamlid.naam}</h3>
-        <label className={"form-label"}>Geef feedback over {geselecteerdTeamlid.naam}</label>
-        <textarea
-          className={"form-control"}
-          rows={"5"}
-          value={feedbackText}
-          onChange={(e) => setFeedbackText(e.target.value)}
-        ></textarea>{" "}
-        <br />
-        <button className={"btn btn-primary"} onClick={handleSubmit}>
-          Verzenden
-        </button>{" "}
-        <br /> <br />
-        {status?.type === "success" && (
-          <div className="alert alert-success" role="alert">
-            Feedback verstuurd!
-          </div>
-        )}
-        {status?.type === "error" && (
-          <div className="alert alert-danger" role="alert">
-            Er is een fout opgetreden
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    //Als er wel een teamlid is geselecteerd, dan wordt het feedback formulier getoond
+    return (
+        <div className={"card text-center h-100"}>
+            <div className={"card-body"}>
+                <h3>{geselecteerdTeamlid.naam}</h3>
+                <label className={"form-label"}>Geef feedback over {geselecteerdTeamlid.naam}</label>
+                <textarea
+                    className={"form-control"}
+                    rows={"5"}
+                    value={feedbackText}
+                    onChange={e => setFeedbackText(e.target.value)}
+                >
+               </textarea> <br/>
+                <button className={"btn btn-primary"} onClick={handleSubmit}>Verzenden</button>
+                <br/> <br/>
+
+                {status?.type === 'success' &&
+                    <div className="alert alert-success" role="alert">Feedback verstuurd!</div>}
+                {status?.type === 'error' && (
+                    <div className="alert alert-danger" role="alert">Er is een fout opgetreden</div>
+                )}
+            </div>
+        </div>
+    )
 }
