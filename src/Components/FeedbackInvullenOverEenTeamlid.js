@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function FeedbackInvullenOverEenTeamlid({ geselecteerdTeamlid }) {
+export default function FeedbackInvullenOverEenTeamlid({ teamlid }) {
   const [feedbackText, setFeedbackText] = useState("");
   const [status, setStatus] = useState(undefined);
 
@@ -13,7 +13,7 @@ export default function FeedbackInvullenOverEenTeamlid({ geselecteerdTeamlid }) 
         id: sessionStorage.getItem("id"),
       },
       ontvanger: {
-        id: geselecteerdTeamlid.id,
+        id: teamlid.id,
       },
     };
     console.log(feedbackData);
@@ -31,7 +31,7 @@ export default function FeedbackInvullenOverEenTeamlid({ geselecteerdTeamlid }) 
   };
 
   //Er wordt eerst gecontroleerd of er een teamlid geselecteerd is
-  if (!geselecteerdTeamlid) {
+  if (!teamlid) {
     return <h3>Geen gebruiker geselecteerd</h3>;
   }
 
@@ -39,8 +39,8 @@ export default function FeedbackInvullenOverEenTeamlid({ geselecteerdTeamlid }) 
     return (
         <div className={"card text-center h-100"}>
             <div className={"card-body"}>
-                <h3>{geselecteerdTeamlid.naam}</h3>
-                <label className={"form-label"}>Geef feedback over {geselecteerdTeamlid.naam}</label>
+                <h3>{teamlid.naam}</h3>
+                <label className={"form-label"}>Geef feedback over {teamlid.naam}</label>
                 <textarea
                     className={"form-control"}
                     rows={"5"}

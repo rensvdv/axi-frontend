@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-export default function FeedbackUpdaten({geselecteerdTeamlid}) {
+export default function FeedbackUpdaten({feedback}) {
     const [feedbackText, setFeedbackText] = useState("");
     const [status, setStatus] = useState(undefined);
 
     const handleSubmit = () => {
         const feedbackData = {
-            id: geselecteerdTeamlid.id,
+            id: feedback.id,
             givenFeedback: feedbackText,
             actief: true,
             zender: {
                     id: sessionStorage.getItem("id"),
                 },
             ontvanger: {
-                    id: geselecteerdTeamlid.ontvanger.id
+                    id: feedback.ontvanger.id
                 }
         };
 
@@ -31,16 +31,16 @@ export default function FeedbackUpdaten({geselecteerdTeamlid}) {
     }
 
     useEffect(() => {
-        if (geselecteerdTeamlid) {
-            setFeedbackText(geselecteerdTeamlid.givenFeedback || "");
+        if (feedback) {
+            setFeedbackText(feedback.givenFeedback || "");
         }
-    }, [geselecteerdTeamlid]);
+    }, [feedback]);
 
     //Er wordt eerst gecontroleerd of er een teamlid geselecteerd is
-    if(!geselecteerdTeamlid) {
+    if(!feedback) {
         return (
             <h3>
-                Geen gebruiker geselecteerd
+                Geen feedback geselecteerd
             </h3>
         )
     }
@@ -48,8 +48,8 @@ export default function FeedbackUpdaten({geselecteerdTeamlid}) {
     return (
         <div className={"card text-center h-100"}>
             <div className={"card-body"}>
-                <h3>{geselecteerdTeamlid.ontvanger.naam}</h3>
-                <label className={"form-label"}>Update feedback over {geselecteerdTeamlid.ontvanger.naam}</label>
+                <h3>{feedback.ontvanger.naam}</h3>
+                <label className={"form-label"}>Update feedback over {feedback.ontvanger.naam}</label>
                 <textarea
                     className={"form-control"}
                     rows={"5"}
@@ -57,10 +57,10 @@ export default function FeedbackUpdaten({geselecteerdTeamlid}) {
                     onChange={e => setFeedbackText(e.target.value)}
                 >
                </textarea> <br/>
-                <button className={"btn btn-secondary"} onClick={handleSubmit}>Update</button>
+                <button className={"btn btn-secondary"} onClick={handleSubmit}>Opslaan</button>
                 <br/> <br/>
                 {status?.type === 'success' &&
-                    <div className="alert alert-success" role="alert">Feedback updated!</div>}
+                    <div className="alert alert-success" role="alert">Feedback opgeslagen!</div>}
                 {status?.type === 'error' && (
                     <div className="alert alert-danger" role="alert">Er is een fout opgetreden</div>
                 )}
