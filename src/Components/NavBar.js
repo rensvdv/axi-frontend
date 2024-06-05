@@ -40,7 +40,7 @@ export default function NavBar() {
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
-              <li classname="nav-item">
+              <li className="nav-item">
                 <Link to={"gebruikergegevens"} className={"nav-link"}>
                   {gebruikersNaam}
                 </Link>
