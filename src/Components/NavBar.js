@@ -28,6 +28,16 @@ export default function NavBar() {
                   Feedback geven
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to={"/gebruikers"} className={"nav-link"}>
+                  Gebruikers
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/profielen"} className={"nav-link"}>
+                  Profielen
+                </Link>
+              </li>
             </ul>
             <ul className="navbar-nav ms-auto">
               <li classname="nav-item">
