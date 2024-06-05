@@ -6,6 +6,7 @@ import FeedbackGeven from "./Pages/FeedbackGeven";
 import MijnTeams from "./Pages/MijnTeams";
 import Gebruikers from "./Pages/Gebruikers";
 import Profielen from "./Pages/Profielen";
+import LijstVragen from "./Pages/LijstVragen"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/feedbackgeven" element={<FeedbackGeven />} />
             <Route path="/gebruikers" element={<Gebruikers />} />
             <Route path="/profielen" element={<Profielen />} />
+            <Route path="/lijst" element={<LijstVragen />} />
         </Routes>
     </div>
   );
