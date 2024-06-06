@@ -30,9 +30,9 @@ export default function ProfielAanmaken({ geselecteerdeRechten }) {
 
     return (
         <div>
-            {geselecteerdeRechten.map(item => (
-                <div key={item.id}>
-                    <h5>{item.naam}</h5>
+            {geselecteerdeRechten.map(recht => (
+                <div key={recht.id}>
+                    <h5>{recht.rechtNaam}</h5>
                 </div>
             ))}
             <br/>

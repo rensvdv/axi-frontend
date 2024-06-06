@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 export default function RechtenLijst({ onSelect }) {
-    const rechtenLijst = [
-        { id: 1, naam: "recht1" },
-        { id: 2, naam: "recht2" },
-        { id: 3, naam: "recht3" },
-        { id: 4, naam: "recht4" },
-        { id: 5, naam: "recht5" },
-    ];
+    const [rechtenLijst, setRechtenLijst] = useState([])
+
+    useEffect(() => {
+        axios
+            .get("https://localhost:7145/feedbackapi/Recht/zoekrechten")
+            .then((response) => {
+                setRechtenLijst(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    });
+
 
     return (
         <div className="list-group">
@@ -15,7 +22,7 @@ export default function RechtenLijst({ onSelect }) {
                 <div key={recht.id} onClick={() => onSelect(recht)}>
                     <div className="list-group-item list-group-item-action" aria-current="true">
                         <div className="d-flex justify-content-between">
-                            <h5 className="mb-1">{recht.naam}</h5>
+                            <h5 className="mb-1">{recht.rechtNaam}</h5>
                         </div>
                         <p className="mb-1">{recht.id}</p>
                     </div>

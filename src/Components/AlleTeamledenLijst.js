@@ -8,7 +8,7 @@ export default function AlleTeamledenLijst({ onClick }) {
   useEffect(() => {
     //Bij het laden van MijnFeedbackLijst wordt alle gekregen feedback van de gebruiker opgehaald
     axios
-      .get("https://localhost:7145/feedbackAPI/Gebruiker")
+      .get("https://localhost:7145/feedbackAPI/Gebruiker/getallgebruikers")
       .then((response) => {
         setTeamleden(response.data);
       })
