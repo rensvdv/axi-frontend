@@ -18,7 +18,8 @@ export default function Profielen() {
                     <h5>Rechten:</h5>
                     <RechtenLijst onSelect={handleSelect}/>
                 </div>
-                <div className="col-6">
+                <div className={"col-1"}></div>
+                <div className="col-4">
                     <h5>Geselecteerde Rechten:</h5>
                     <ProfielAanmaken geselecteerdeRechten={geselecteerdeRechten}/>
                 </div>

@@ -29,19 +29,25 @@ export default function ProfielAanmaken({ geselecteerdeRechten }) {
     }
 
     return (
-        <div>
-            {geselecteerdeRechten.map(recht => (
-                <div key={recht.id}>
-                    <h5>{recht.rechtNaam}</h5>
-                </div>
-            ))}
+        <div className={"text-start"}>
+            <div className="list-group">
+                {geselecteerdeRechten.map(recht => (
+                    <div className="list-group-item list-group-item-action" aria-current="true">
+                        <div className="d-flex justify-content-between">
+                            <h5 className="mb-1">{recht.rechtNaam}</h5>
+                        </div>
+                    </div>
+                ))}
+            </div>
             <br/>
+            <label className={"form-label"}>Geef het profiel een naam</label>
             <input
                 type="text"
                 value={profielNaam}
+                className="form-control"
                 onChange={(e) => setProfielNaam(e.target.value)}
                 placeholder="Voer een profielnaam in"
-            /> <br />
+            /> <br/>
             <button className={"btn btn-primary"} onClick={handlePost}>Opslaan</button>
         </div>
     );
