@@ -15,12 +15,12 @@ export default function Profielen() {
         <div className="container">
             <div className="row">
                 <div className="col-6">
-                    <h5>Geselecteerde Rechten:</h5>
-                    <ProfielAanmaken geselecteerdeRechten={geselecteerdeRechten} />
+                    <h5>Rechten:</h5>
+                    <RechtenLijst onSelect={handleSelect}/>
                 </div>
                 <div className="col-6">
-                    <h5>Rechten:</h5>
-                    <RechtenLijst onSelect={handleSelect} />
+                    <h5>Geselecteerde Rechten:</h5>
+                    <ProfielAanmaken geselecteerdeRechten={geselecteerdeRechten}/>
                 </div>
             </div>
         </div>

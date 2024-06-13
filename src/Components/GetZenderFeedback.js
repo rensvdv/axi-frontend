@@ -52,7 +52,7 @@ export default function GetZenderFeedback({ teamlid, onClick }) {
                     <h6 className={"mb-1"}>Aan: {feedback.ontvanger.naam}</h6>
                     <small>{feedback.id}</small>
                   </div>
-                  <p className={"mb-1"}>{feedback.givenFeedback}</p>
+                  <div className={"text-start"}>{feedback.givenFeedback} </div>
                 </div>
             ))
         )}
