@@ -24,7 +24,7 @@ export default function RechtenLijst({ onSelect }) {
                         <div className="d-flex justify-content-between">
                             <h5 className="mb-1">{recht.rechtNaam}</h5>
                         </div>
-                        <p className="mb-1">{recht.id}</p>
+                        <p className="mb-1 text-start">{recht.id}</p>
                     </div>
                 </div>
             ))}

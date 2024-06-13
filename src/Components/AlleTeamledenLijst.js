@@ -29,7 +29,7 @@ export default function AlleTeamledenLijst({ onClick }) {
               <div className={"d-flex justify-content-between"}>
                 <h5 className={"mb-1"}>{teamlidFilter.naam}</h5>
               </div>
-              <p className={"mb-1"}>Teamlid</p>
+              <p className={"mb-1 text-start"}>Teamlid</p>
             </div>
           </div>
         ))}

@@ -29,7 +29,7 @@ export default function MijnFeedbackLijst({ onClick }) {
                 <h5 className={"mb-1"}>Zender: {feedback.zender.naam}</h5>
                 <small>{feedback.id}</small>
               </div>
-              <p className={"mb-1"}>{feedback.givenFeedback}</p>
+              <p className={"mb-1 text-start"}>{feedback.givenFeedback}</p>
             </div>
           </div>
         ))}
