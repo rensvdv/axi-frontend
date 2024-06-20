@@ -24,7 +24,7 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={"/feedbackgeven"} className={"nav-link"}>
+                <Link to={""} className={"nav-link"}>
                   Feedback geven
                 </Link>
               </li>
