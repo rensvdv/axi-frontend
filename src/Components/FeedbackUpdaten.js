@@ -63,7 +63,7 @@ export default function FeedbackUpdaten({ feedback }) {
         ></textarea>{" "}
         <br />
         <div className="row">
-          <div className={"col-3 gy-2"}>
+          <div className={"col-4 gy-2"}>
             <GetLijsten TeamId={1} onClick={(lijst) => handleClick(lijst.id)} />
           </div>
           <div className={"col-7 gy-2"}>

@@ -57,7 +57,7 @@ export default function FeedbackInvullenOverEenTeamlid({ teamlid }) {
         ></textarea>{" "}
         <div className="row">
           <br />
-          <div className={"col-3 gy-2"}>
+          <div className={"col-4 gy-2"}>
             <GetLijsten TeamId={1} onClick={(lijst) => handleClick(lijst.id)} />
           </div>
           <div className={"col-7 gy-2"}>
