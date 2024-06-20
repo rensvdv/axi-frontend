@@ -18,6 +18,7 @@ export default function GetLijsten({ onClick, LijstId }) {
 
   return (
     <div className="list-group">
+      <h4>Vragen:</h4>
       {vragen.length === 0 ? (
         <div>Geen vragen beschikbaar</div>
       ) : (

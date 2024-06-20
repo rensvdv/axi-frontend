@@ -8,22 +8,22 @@ export default function GetZenderFeedback({ teamlid, onClick }) {
 
   useEffect(() => {
     axios
-        .get("https://localhost:7145/feedbackAPI/Feedback/getzenderfeedback/" + sessionStorage.getItem("id"))
-        .then((response) => {
-          setFeedbackObjecten(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      .get("https://localhost:7145/feedbackAPI/Feedback/getzenderfeedback/" + sessionStorage.getItem("id"))
+      .then((response) => {
+        setFeedbackObjecten(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
     if (teamlid) {
-      if (teamlid.soort === 'feedback') {
-        const feedbackGefilterd = feedbackObjecten.filter(feedback => feedback.ontvanger.id === teamlid.ontvanger.id);
+      if (teamlid.soort === "feedback") {
+        const feedbackGefilterd = feedbackObjecten.filter((feedback) => feedback.ontvanger.id === teamlid.ontvanger.id);
         setFeedbackObjectenFilter(feedbackGefilterd);
       } else {
-        const feedbackGefilterd = feedbackObjecten.filter(feedback => feedback.ontvanger.id === teamlid.id);
+        const feedbackGefilterd = feedbackObjecten.filter((feedback) => feedback.ontvanger.id === teamlid.id);
         setFeedbackObjectenFilter(feedbackGefilterd);
       }
     } else {
@@ -37,25 +37,24 @@ export default function GetZenderFeedback({ teamlid, onClick }) {
   };
 
   return (
-      <div className={"list-group"}>
-        {feedbackObjectenFilter.length === 0 ? (
-            <div>No feedback available.</div>
-        ) : (
-            feedbackObjectenFilter.map(feedback => (
-                <div
-                    key={feedback.id}
-                    onClick={() => handleClick(feedback)}
-                    className={`list-group-item list-group-item-action ${feedback.id === selectedFeedbackId ? 'active' : ''}`}
-                    aria-current={"true"}
-                >
-                  <div className={"d-flex justify-content-between"}>
-                    <h6 className={"mb-1"}>Aan: {feedback.ontvanger.naam}</h6>
-                    <small>{feedback.id}</small>
-                  </div>
-                  <div className={"text-start"}>{feedback.givenFeedback} </div>
-                </div>
-            ))
-        )}
-      </div>
+    <div className={"list-group"}>
+      {feedbackObjectenFilter.length === 0 ? (
+        <div>No feedback available.</div>
+      ) : (
+        feedbackObjectenFilter.map((feedback) => (
+          <div
+            key={feedback.id}
+            onClick={() => handleClick(feedback)}
+            className={`list-group-item list-group-item-action ${feedback.id === selectedFeedbackId ? "active" : ""}`}
+            aria-current={"true"}
+          >
+            <div className={"d-flex justify-content-between"}>
+              <h6 className={"mb-1"}>Aan: {feedback.ontvanger.naam}</h6>
+            </div>
+            <div className={"text-start"}>{feedback.givenFeedback} </div>
+          </div>
+        ))
+      )}
+    </div>
   );
 }
