@@ -4,6 +4,7 @@ import axios from "axios";
 export default function ProfielAanmaken({ geselecteerdeRechten }) {
 
     const [profielNaam, setProfielNaam] = useState('');
+    const [status, setStatus] = useState(undefined);
 
     const handlePost = () => {
         const profielData = {
@@ -13,9 +14,12 @@ export default function ProfielAanmaken({ geselecteerdeRechten }) {
         console.log(profielData);
         axios.post('https://localhost:7145/feedbackapi/profiel/maakprofiel', profielData)
             .then(response => {
+                setStatus({ type: "success" });
                 console.log('Profiel aangemaakt', response.data);
+                setProfielNaam("");
             })
             .catch(error => {
+                setStatus({ type: "error" });
                 console.error('Er is een fout opgetreden', error);
             });
     };
@@ -49,6 +53,18 @@ export default function ProfielAanmaken({ geselecteerdeRechten }) {
                 placeholder="Voer een profielnaam in"
             /> <br/>
             <button className={"btn btn-primary"} onClick={handlePost}>Opslaan</button>
+
+            <br /> < br />
+            {status?.type === "success" && (
+                <div className="alert alert-success" role="alert">
+                    Profiel opgeslagen!
+                </div>
+            )}
+            {status?.type === "error" && (
+                <div className="alert alert-danger" role="alert">
+                    Er is een fout opgetreden
+                </div>
+            )}
         </div>
     );
 }
