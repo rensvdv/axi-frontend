@@ -29,11 +29,6 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={"/gebruikers"} className={"nav-link"}>
-                  Gebruikers
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link to={"/profielen"} className={"nav-link"}>
                   Profielen
                 </Link>
