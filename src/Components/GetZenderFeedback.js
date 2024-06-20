@@ -4,8 +4,7 @@ import axios from "axios";
 export default function GetZenderFeedback({ teamlid, onClick }) {
   const [feedbackObjecten, setFeedbackObjecten] = useState([]);
   const [feedbackObjectenFilter, setFeedbackObjectenFilter] = useState([]);
-  const [selectedFeedbackId, setSelectedFeedbackId] = useState(null);
-
+  const [selectedFeedbackId, setSelectedFeedbackId] = useState([]);
   useEffect(() => {
     axios
       .get("https://localhost:7145/feedbackAPI/Feedback/getzenderfeedback/" + sessionStorage.getItem("id"))

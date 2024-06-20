@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function AlleTeamledenLijst({ onClick }) {
   const [teamleden, setTeamleden] = useState([]);
+  const [selectedUserId, setSelectedUserId] = useState([]);
   const userId = parseInt(sessionStorage.getItem("id"));
 
   useEffect(() => {
@@ -16,6 +17,10 @@ export default function AlleTeamledenLijst({ onClick }) {
         console.log(error);
       });
   });
+  const handleClick = (user) => {
+    setSelectedUserId(user.id);
+    onClick(user);
+  };
 
   return (
     <div className="list-group">
@@ -24,8 +29,12 @@ export default function AlleTeamledenLijst({ onClick }) {
         .filter((teamlid) => teamlid.id !== userId)
         .map((teamlidFilter) => (
           /*Deze onclick verwijst naar de onclick uit FeedbackGeven, doordat deze als property is meegegeven */
-          <div key={teamlidFilter.id} onClick={() => onClick(teamlidFilter)}>
-            <div className={"list-group-item list-group-item-action"} aria-current={"true"}>
+          <div key={teamlidFilter.id} onClick={() => handleClick(teamlidFilter)}>
+            <div
+              className={`list-group-item list-group-item-action ${
+                teamlidFilter.id === selectedUserId ? "active" : ""
+              }`}
+            >
               <div className={"d-flex justify-content-between"}>
                 <h5 className={"mb-1"}>{teamlidFilter.naam}</h5>
               </div>
